@@ -1,0 +1,68 @@
+#include <iostream>
+#include <fstream>
+#include <string.h>
+using namespace std;
+class file
+{
+public:
+    void write_data()
+    {
+        string s1;
+        ofstream write("data.txt", ios::out);
+        cout << "\nFile opened successfully for writing data" << endl;
+        write << "Welcome to my file";
+        write
+            << "\nThis file contains information about my city";
+        write << "\nPune was the capital city of Maratha empire for hundreds of years !!!";
+        write
+            << "\nPune is the Cultural capital of Maharashtra";
+        write << "\nPune is also known as Oxford of the East";
+        write << "\nPune and PCMC are twin cities";
+        write.close();
+        cout << "\nFile successfully closed after writing data" << endl;
+    }
+    void read_data()
+    {
+        string s2;
+        ifstream read;
+        read.open("data.txt", ios::in);
+        cout << "\nFile successfully opened for reading data" << endl;
+        while (read.eof() == 0)
+        {
+            getline(read, s2);
+            cout << s2 << endl;
+        }
+        read.close();
+        cout << "\nFile successfully closed after reading data" << endl;
+    }
+};
+int main()
+{
+    int ch;
+    file f;
+    while (true)
+    {
+        cout << "enter your choice" << endl;
+        cout << "1. write data in file: " << endl;
+        cout << "2. read data from the file:" << endl;
+        cout << "3. exit: " << endl;
+        cin >> ch;
+        if (ch == 1)
+        {
+            f.write_data();
+        }
+        else if (ch == 2)
+        {
+            f.read_data();
+        }
+        else if (ch == 3)
+        {
+            break;
+        }
+        else
+        {
+            cout << "enter valid choice: ";
+        }
+    }
+    return 0;
+}
